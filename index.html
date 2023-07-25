@@ -1,73 +1,90 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
-        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
-        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
-        <link rel="stylesheet" href="css/leaflet-measure.css">
-        <style>
-        html, body, #map {
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="css/leaflet.css">
+    <link rel="stylesheet" href="css/L.Control.Locate.min.css">
+    <link rel="stylesheet" href="css/qgis2web.css">
+    <link rel="stylesheet" href="css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+    <link rel="stylesheet" href="css/leaflet-measure.css">
+    <link rel="stylesheet" href="css/leaflet-geoman.css" />
+    <link rel="stylesheet" href="css/Leaflet.Coordinates-0.1.5.css" />
+
+
+    <style>
+        html,
+        body,
+        #map {
             width: 100%;
             height: 100%;
             padding: 0;
             margin: 0;
         }
-        </style>
-        <title></title>
-    </head>
-    <body>
-        <div id="map">
-        </div>
-        <script src="js/qgis2web_expressions.js"></script>
-        <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
-        <script src="js/leaflet-svg-shape-markers.min.js"></script>
-        <script src="js/leaflet.rotatedMarker.js"></script>
-        <script src="js/leaflet.pattern.js"></script>
-        <script src="js/leaflet-hash.js"></script>
-        <script src="js/Autolinker.min.js"></script>
-        <script src="js/rbush.min.js"></script>
-        <script src="js/labelgun.min.js"></script>
-        <script src="js/labels.js"></script>
-        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
-        <script src="js/leaflet-measure.js"></script>
-        <script src="data/GISSDEESTADO_DE_MS_POLITICO_0.js"></script>
-        <script src="data/GISSDEVIA_FERREA_1.js"></script>
-        <script src="data/GISSDERODOVIAS_ESTADUAIS_2.js"></script>
-        <script src="data/GISSDERODOVIAS_FEDERAIS_3.js"></script>
-        <script src="data/AERODROMO_PRIVADO_OFICIAL_4.js"></script>
-        <script src="data/AERODROMO_PUBLICO_5.js"></script>
-        <script src="data/9GPTLOGTerminalRodovirio_6.js"></script>
-        <script src="data/9GPTLOGSubestaodeEnergiaEltrica_7.js"></script>
-        <script src="data/9GPTLOGSANESUL_8.js"></script>
-        <script src="data/9GPTLOGRededeEnsinoPblicaePrivada_9.js"></script>
-        <script src="data/9GPTLOGMeiosdeHospedagens_10.js"></script>
-        <script src="data/9GPTLOGLogsticaTransportePrestadorasdeServios_11.js"></script>
-        <script src="data/9GPTLOGLogsticaSuprimentoEmpresas_12.js"></script>
-        <script src="data/9GPTLOGLogsticaSalvamentoPrestadorasdeServios_13.js"></script>
-        <script src="data/9GPTLOGLogsticaManutenoPrestadorasdeServios_14.js"></script>
-        <script src="data/9GPTLOGHospitaispostosdeSadeUPA_15.js"></script>
-        <script src="data/9GPTLOGEstdioMunicipal_16.js"></script>
-        <script src="data/9GPTLOGEstaodeRdio_17.js"></script>
-        <script src="data/9GPTLOGCombustveiseLubrificantes_18.js"></script>
-        <script src="data/9GPTLOGCemitrios_19.js"></script>
-        <script src="data/9GPTLOGArmazm_20.js"></script>
-        <script src="https://unpkg.com/esri-leaflet@2.1.3/dist/esri-leaflet.js"
+    </style>
+    <title></title>
+</head>
+
+<body>
+    <div id="map">
+    </div>
+    <script src="js/qgis2web_expressions.js"></script>
+    <script src="js/leaflet.js"></script>
+    <script src="js/L.Control.Locate.min.js"></script>
+    <script src="js/leaflet-svg-shape-markers.min.js"></script>
+    <script src="js/leaflet.rotatedMarker.js"></script>
+    <script src="js/leaflet.pattern.js"></script>
+    <script src="js/leaflet-hash.js"></script>
+    <script src="js/Autolinker.min.js"></script>
+    <script src="js/rbush.min.js"></script>
+    <script src="js/labelgun.min.js"></script>
+    <script src="js/labels.js"></script>
+    <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+    <script src="js/leaflet-measure.js"></script>
+    <script src="data/GISSDEESTADO_DE_MS_POLITICO_0.js"></script>
+    <script src="data/GISSDEVIA_FERREA_1.js"></script>
+    <script src="data/GISSDERODOVIAS_ESTADUAIS_2.js"></script>
+    <script src="data/GISSDERODOVIAS_FEDERAIS_3.js"></script>
+    <script src="data/AERODROMO_PRIVADO_OFICIAL_4.js"></script>
+    <script src="data/AERODROMO_PUBLICO_5.js"></script>
+    <script src="data/9GPTLOGTerminalRodovirio_6.js"></script>
+    <script src="data/9GPTLOGSubestaodeEnergiaEltrica_7.js"></script>
+    <script src="data/9GPTLOGSANESUL_8.js"></script>
+    <script src="data/9GPTLOGRededeEnsinoPblicaePrivada_9.js"></script>
+    <script src="data/9GPTLOGMeiosdeHospedagens_10.js"></script>
+    <script src="data/9GPTLOGLogsticaTransportePrestadorasdeServios_11.js"></script>
+    <script src="data/9GPTLOGLogsticaSuprimentoEmpresas_12.js"></script>
+    <script src="data/9GPTLOGLogsticaSalvamentoPrestadorasdeServios_13.js"></script>
+    <script src="data/9GPTLOGLogsticaManutenoPrestadorasdeServios_14.js"></script>
+    <script src="data/9GPTLOGHospitaispostosdeSadeUPA_15.js"></script>
+    <script src="data/9GPTLOGEstdioMunicipal_16.js"></script>
+    <script src="data/9GPTLOGEstaodeRdio_17.js"></script>
+    <script src="data/9GPTLOGCombustveiseLubrificantes_18.js"></script>
+    <script src="data/9GPTLOGCemitrios_19.js"></script>
+    <script src="data/9GPTLOGArmazm_20.js"></script>
+    <script src="js/leaflet.latlng-graticule.js"></script>
+    <script type="text/javascript" src="js/Leaflet.Coordinates-0.1.5.min.js"></script>
+    <script src="js/leaflet.browser.print.min.js"></script>
+
+
+    <script src="js/leaflet-geoman.min.js"></script>
+    <script src="https://unpkg.com/esri-leaflet@2.1.3/dist/esri-leaflet.js"
         integrity="sha512-pijLQd2FbV/7+Jwa86Mk3ACxnasfIMzJRrIlVQsuPKPCfUBCDMDUoLiBQRg7dAQY6D1rkmCcR8286hVTn/wlIg=="
         crossorigin=""></script>
 
-        <script>
+    <script>
         var map = L.map('map', {
-            zoomControl:true, maxZoom:19, minZoom:1
-        }).fitBounds([[-21.53881958301445,-58.148592817470416],[-19.815427888219396,-54.63288875256847]]);
+            zoomControl: true, maxZoom: 19, minZoom: 1, drawControl: true
+        }).fitBounds([[-21.53881958301445, -58.148592817470416], [-19.815427888219396, -54.63288875256847]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
-        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
-        L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
+        var autolinker = new Autolinker({ truncate: { length: 30, location: 'smart' } });
+        L.control.locate({ locateOptions: { maxZoom: 19 } }).addTo(map);
         var measureControl = new L.Control.Measure({
             position: 'topleft',
             primaryLengthUnit: 'meters',
@@ -77,9 +94,9 @@
         });
         measureControl.addTo(map);
         document.getElementsByClassName('leaflet-control-measure-toggle')[0]
-        .innerHTML = '';
+            .innerHTML = '';
         document.getElementsByClassName('leaflet-control-measure-toggle')[0]
-        .className += ' fas fa-ruler';
+            .className += ' fas fa-ruler';
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
             map.setMaxBounds(map.getBounds());
@@ -90,7 +107,7 @@
                         <td colspan="2">' + (feature.properties['Municipio'] !== null ? autolinker.link(feature.properties['Municipio'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_GISSDEESTADO_DE_MS_POLITICO_0_0() {
@@ -101,7 +118,7 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 2.0, 
+                weight: 2.0,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(0,0,0,0.0)',
@@ -117,6 +134,7 @@
             dataVar: 'json_GISSDEESTADO_DE_MS_POLITICO_0',
             layerName: 'layer_GISSDEESTADO_DE_MS_POLITICO_0',
             pane: 'pane_GISSDEESTADO_DE_MS_POLITICO_0',
+            pmIgnore: true,
             onEachFeature: pop_GISSDEESTADO_DE_MS_POLITICO_0,
             style: style_GISSDEESTADO_DE_MS_POLITICO_0_0,
         });
@@ -137,7 +155,7 @@
                         <td>' + (feature.properties['TIPO'] !== null ? autolinker.link(feature.properties['TIPO'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_GISSDEVIA_FERREA_1_0() {
@@ -159,6 +177,7 @@
         var layer_GISSDEVIA_FERREA_1 = new L.geoJson(json_GISSDEVIA_FERREA_1, {
             attribution: '',
             interactive: true,
+            pmIgnore: true,
             dataVar: 'json_GISSDEVIA_FERREA_1',
             layerName: 'layer_GISSDEVIA_FERREA_1',
             pane: 'pane_GISSDEVIA_FERREA_1',
@@ -190,7 +209,7 @@
                         <td>' + (feature.properties['EXTENSAO_Km'] !== null ? autolinker.link(feature.properties['EXTENSAO_Km'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_GISSDERODOVIAS_ESTADUAIS_2_0() {
@@ -212,6 +231,7 @@
         var layer_GISSDERODOVIAS_ESTADUAIS_2 = new L.geoJson(json_GISSDERODOVIAS_ESTADUAIS_2, {
             attribution: '',
             interactive: true,
+            pmIgnore: true,
             dataVar: 'json_GISSDERODOVIAS_ESTADUAIS_2',
             layerName: 'layer_GISSDERODOVIAS_ESTADUAIS_2',
             pane: 'pane_GISSDERODOVIAS_ESTADUAIS_2',
@@ -243,7 +263,7 @@
                         <td>' + (feature.properties['EXTENSAO_Km'] !== null ? autolinker.link(feature.properties['EXTENSAO_Km'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_GISSDERODOVIAS_FEDERAIS_3_0() {
@@ -265,6 +285,7 @@
         var layer_GISSDERODOVIAS_FEDERAIS_3 = new L.geoJson(json_GISSDERODOVIAS_FEDERAIS_3, {
             attribution: '',
             interactive: true,
+            pmIgnore: true,
             dataVar: 'json_GISSDERODOVIAS_FEDERAIS_3',
             layerName: 'layer_GISSDERODOVIAS_FEDERAIS_3',
             pane: 'pane_GISSDERODOVIAS_FEDERAIS_3',
@@ -300,18 +321,18 @@
                         <td>' + (feature.properties['LARGURA'] !== null ? autolinker.link(feature.properties['LARGURA'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_AERODROMO_PRIVADO_OFICIAL_4_0() {
             return {
                 pane: 'pane_AERODROMO_PRIVADO_OFICIAL_4',
-        rotationAngle: 0.0,
-        rotationOrigin: 'center center',
-        icon: L.icon({
-            iconUrl: 'markers/transport_aerodrome2.svg',
-            iconSize: [15.2, 15.2]
-        }),
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/transport_aerodrome2.svg',
+                    iconSize: [15.2, 15.2]
+                }),
                 interactive: true,
             }
         }
@@ -362,18 +383,18 @@
                         <td>' + (feature.properties['LARGURA'] !== null ? autolinker.link(feature.properties['LARGURA'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_AERODROMO_PUBLICO_5_0() {
             return {
                 pane: 'pane_AERODROMO_PUBLICO_5',
-        rotationAngle: 0.0,
-        rotationOrigin: 'center center',
-        icon: L.icon({
-            iconUrl: 'markers/transport_aerodrome.svg',
-            iconSize: [15.2, 15.2]
-        }),
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/transport_aerodrome.svg',
+                    iconSize: [15.2, 15.2]
+                }),
                 interactive: true,
             }
         }
@@ -420,18 +441,18 @@
                         <td>' + (feature.properties['CLASSE'] !== null ? autolinker.link(feature.properties['CLASSE'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_9GPTLOGTerminalRodovirio_6_0() {
             return {
                 pane: 'pane_9GPTLOGTerminalRodovirio_6',
-        rotationAngle: 0.0,
-        rotationOrigin: 'center center',
-        icon: L.icon({
-            iconUrl: 'markers/transport_bus_station.svg',
-            iconSize: [15.2, 15.2]
-        }),
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/transport_bus_station.svg',
+                    iconSize: [15.2, 15.2]
+                }),
                 interactive: true,
             }
         }
@@ -474,18 +495,18 @@
                         <td>' + (feature.properties['CLASSE'] !== null ? autolinker.link(feature.properties['CLASSE'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_9GPTLOGSubestaodeEnergiaEltrica_7_0() {
             return {
                 pane: 'pane_9GPTLOGSubestaodeEnergiaEltrica_7',
-        rotationAngle: 0.0,
-        rotationOrigin: 'center center',
-        icon: L.icon({
-            iconUrl: 'markers/poi_tower_power.svg',
-            iconSize: [15.2, 15.2]
-        }),
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/poi_tower_power.svg',
+                    iconSize: [15.2, 15.2]
+                }),
                 interactive: true,
             }
         }
@@ -532,7 +553,7 @@
                         <td>' + (feature.properties['CLASSE'] !== null ? autolinker.link(feature.properties['CLASSE'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_9GPTLOGSANESUL_8_0() {
@@ -595,7 +616,7 @@
                         <td>' + (feature.properties['CLASSE'] !== null ? autolinker.link(feature.properties['CLASSE'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_9GPTLOGRededeEnsinoPblicaePrivada_9_0() {
@@ -658,7 +679,7 @@
                         <td>' + (feature.properties['CLASSE'] !== null ? autolinker.link(feature.properties['CLASSE'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_9GPTLOGMeiosdeHospedagens_10_0() {
@@ -721,7 +742,7 @@
                         <td>' + (feature.properties['CLASSE'] !== null ? autolinker.link(feature.properties['CLASSE'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_9GPTLOGLogsticaTransportePrestadorasdeServios_11_0() {
@@ -784,7 +805,7 @@
                         <td>' + (feature.properties['CLASSE'] !== null ? autolinker.link(feature.properties['CLASSE'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_9GPTLOGLogsticaSuprimentoEmpresas_12_0() {
@@ -847,7 +868,7 @@
                         <td>' + (feature.properties['CLASSE'] !== null ? autolinker.link(feature.properties['CLASSE'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_9GPTLOGLogsticaSalvamentoPrestadorasdeServios_13_0() {
@@ -910,7 +931,7 @@
                         <td>' + (feature.properties['CLASSE'] !== null ? autolinker.link(feature.properties['CLASSE'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_9GPTLOGLogsticaManutenoPrestadorasdeServios_14_0() {
@@ -973,18 +994,18 @@
                         <td>' + (feature.properties['CLASSE'] !== null ? autolinker.link(feature.properties['CLASSE'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_9GPTLOGHospitaispostosdeSadeUPA_15_0() {
             return {
                 pane: 'pane_9GPTLOGHospitaispostosdeSadeUPA_15',
-        rotationAngle: 0.0,
-        rotationOrigin: 'center center',
-        icon: L.icon({
-            iconUrl: 'markers/cross.svg',
-            iconSize: [15.2, 15.2]
-        }),
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/cross.svg',
+                    iconSize: [15.2, 15.2]
+                }),
                 interactive: true,
             }
         }
@@ -1031,7 +1052,7 @@
                         <td>' + (feature.properties['CLASSE'] !== null ? autolinker.link(feature.properties['CLASSE'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_9GPTLOGEstdioMunicipal_16_0() {
@@ -1094,18 +1115,18 @@
                         <td>' + (feature.properties['CLASSE'] !== null ? autolinker.link(feature.properties['CLASSE'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_9GPTLOGEstaodeRdio_17_0() {
             return {
                 pane: 'pane_9GPTLOGEstaodeRdio_17',
-        rotationAngle: 0.0,
-        rotationOrigin: 'center center',
-        icon: L.icon({
-            iconUrl: 'markers/poi_tower_communications.svg',
-            iconSize: [15.2, 15.2]
-        }),
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/poi_tower_communications.svg',
+                    iconSize: [15.2, 15.2]
+                }),
                 interactive: true,
             }
         }
@@ -1152,18 +1173,18 @@
                         <td>' + (feature.properties['CLASSE'] !== null ? autolinker.link(feature.properties['CLASSE'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_9GPTLOGCombustveiseLubrificantes_18_0() {
             return {
                 pane: 'pane_9GPTLOGCombustveiseLubrificantes_18',
-        rotationAngle: 0.0,
-        rotationOrigin: 'center center',
-        icon: L.icon({
-            iconUrl: 'markers/transport_fuel.svg',
-            iconSize: [15.2, 15.2]
-        }),
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/transport_fuel.svg',
+                    iconSize: [15.2, 15.2]
+                }),
                 interactive: true,
             }
         }
@@ -1210,18 +1231,18 @@
                         <td>' + (feature.properties['CLASSE'] !== null ? autolinker.link(feature.properties['CLASSE'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_9GPTLOGCemitrios_19_0() {
             return {
                 pane: 'pane_9GPTLOGCemitrios_19',
-        rotationAngle: 0.0,
-        rotationOrigin: 'center center',
-        icon: L.icon({
-            iconUrl: 'markers/religion=christian.svg',
-            iconSize: [15.2, 15.2]
-        }),
+                rotationAngle: 0.0,
+                rotationOrigin: 'center center',
+                icon: L.icon({
+                    iconUrl: 'markers/religion=christian.svg',
+                    iconSize: [15.2, 15.2]
+                }),
                 interactive: true,
             }
         }
@@ -1268,7 +1289,7 @@
                         <td>' + (feature.properties['CLASSE'] !== null ? autolinker.link(feature.properties['CLASSE'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, { maxHeight: 400 });
         }
 
         function style_9GPTLOGArmazm_20_0() {
@@ -1308,21 +1329,21 @@
         });
         bounds_group.addLayer(layer_9GPTLOGArmazm_20);
         map.addLayer(layer_9GPTLOGArmazm_20);
-            var abstract = new L.Control({'position':'bottomright'});
-            abstract.onAdd = function (map) {
-                this._div = L.DomUtil.create('div',
+        var abstract = new L.Control({ 'position': 'bottomright' });
+        abstract.onAdd = function (map) {
+            this._div = L.DomUtil.create('div',
                 'leaflet-control abstract');
-                this._div.id = 'abstract'
+            this._div.id = 'abstract'
 
-                    abstract.show();
-                    return this._div;
-                };
-                abstract.show = function () {
-                    this._div.classList.remove("abstract");
-                    this._div.classList.add("abstractUncollapsed");
-                    this._div.innerHTML = 'Teste para visualização de estruturas de relevância no terreno para planejamento.';
-            };
-            abstract.addTo(map);
+            abstract.show();
+            return this._div;
+        };
+        abstract.show = function () {
+            this._div.classList.remove("abstract");
+            this._div.classList.add("abstractUncollapsed");
+            this._div.innerHTML = 'Teste para visualização de estruturas de relevância no terreno para planejamento.';
+        };
+        abstract.addTo(map);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
@@ -1330,60 +1351,62 @@
             title: 'Testing'
         }).addTo(map);
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
-        .className += ' fa fa-search';
+            .className += ' fa fa-search';
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
-        .title += 'Search for a place';
-        var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/9GPTLOGArmazm_20.png" /> 9º GPT LOG - Armazém': layer_9GPTLOGArmazm_20,'<img src="legend/9GPTLOGCemitrios_19.png" /> 9º GPT LOG - Cemitérios': layer_9GPTLOGCemitrios_19,'<img src="legend/9GPTLOGCombustveiseLubrificantes_18.png" /> 9º GPT LOG - Combustíveis e Lubrificantes': layer_9GPTLOGCombustveiseLubrificantes_18,'<img src="legend/9GPTLOGEstaodeRdio_17.png" /> 9º GPT LOG - Estação de Rádio': layer_9GPTLOGEstaodeRdio_17,'<img src="legend/9GPTLOGEstdioMunicipal_16.png" /> 9º GPT LOG - Estádio Municipal': layer_9GPTLOGEstdioMunicipal_16,'<img src="legend/9GPTLOGHospitaispostosdeSadeUPA_15.png" /> 9º GPT LOG - Hospitais, postos de Saúde, UPA': layer_9GPTLOGHospitaispostosdeSadeUPA_15,'<img src="legend/9GPTLOGLogsticaManutenoPrestadorasdeServios_14.png" /> 9º GPT LOG - Logística Manutenção - Prestadoras de Serviços': layer_9GPTLOGLogsticaManutenoPrestadorasdeServios_14,'<img src="legend/9GPTLOGLogsticaSalvamentoPrestadorasdeServios_13.png" /> 9º GPT LOG - Logística Salvamento - Prestadoras de Serviços': layer_9GPTLOGLogsticaSalvamentoPrestadorasdeServios_13,'<img src="legend/9GPTLOGLogsticaSuprimentoEmpresas_12.png" /> 9º GPT LOG - Logística Suprimento-Empresas': layer_9GPTLOGLogsticaSuprimentoEmpresas_12,'<img src="legend/9GPTLOGLogsticaTransportePrestadorasdeServios_11.png" /> 9º GPT LOG - Logística Transporte - Prestadoras de Serviços': layer_9GPTLOGLogsticaTransportePrestadorasdeServios_11,'<img src="legend/9GPTLOGMeiosdeHospedagens_10.png" /> 9º GPT LOG - Meios de Hospedagens': layer_9GPTLOGMeiosdeHospedagens_10,'<img src="legend/9GPTLOGRededeEnsinoPblicaePrivada_9.png" /> 9º GPT LOG - Rede de Ensino Pública e Privada': layer_9GPTLOGRededeEnsinoPblicaePrivada_9,'<img src="legend/9GPTLOGSANESUL_8.png" /> 9º GPT LOG - SANESUL': layer_9GPTLOGSANESUL_8,'<img src="legend/9GPTLOGSubestaodeEnergiaEltrica_7.png" /> 9º GPT LOG - Subestação de Energia Elétrica': layer_9GPTLOGSubestaodeEnergiaEltrica_7,'<img src="legend/9GPTLOGTerminalRodovirio_6.png" /> 9º GPT LOG - Terminal Rodoviário': layer_9GPTLOGTerminalRodovirio_6,'<img src="legend/AERODROMO_PUBLICO_5.png" /> AERODROMO_PUBLICO': layer_AERODROMO_PUBLICO_5,'<img src="legend/AERODROMO_PRIVADO_OFICIAL_4.png" /> AERODROMO_PRIVADO_OFICIAL': layer_AERODROMO_PRIVADO_OFICIAL_4,'<img src="legend/GISSDERODOVIAS_FEDERAIS_3.png" /> GIS.SDE.RODOVIAS_FEDERAIS': layer_GISSDERODOVIAS_FEDERAIS_3,'<img src="legend/GISSDERODOVIAS_ESTADUAIS_2.png" /> GIS.SDE.RODOVIAS_ESTADUAIS': layer_GISSDERODOVIAS_ESTADUAIS_2,'<img src="legend/GISSDEVIA_FERREA_1.png" /> GIS.SDE.VIA_FERREA': layer_GISSDEVIA_FERREA_1,'<img src="legend/GISSDEESTADO_DE_MS_POLITICO_0.png" /> GIS.SDE.ESTADO_DE_MS_POLITICO': layer_GISSDEESTADO_DE_MS_POLITICO_0,}).addTo(map);
+            .title += 'Search for a place';
+
+        var baseMaps = {}
+
+        L.control.layers(baseMaps, { '<img src="legend/9GPTLOGArmazm_20.png" /> 9º GPT LOG - Armazém': layer_9GPTLOGArmazm_20, '<img src="legend/9GPTLOGCemitrios_19.png" /> 9º GPT LOG - Cemitérios': layer_9GPTLOGCemitrios_19, '<img src="legend/9GPTLOGCombustveiseLubrificantes_18.png" /> 9º GPT LOG - Combustíveis e Lubrificantes': layer_9GPTLOGCombustveiseLubrificantes_18, '<img src="legend/9GPTLOGEstaodeRdio_17.png" /> 9º GPT LOG - Estação de Rádio': layer_9GPTLOGEstaodeRdio_17, '<img src="legend/9GPTLOGEstdioMunicipal_16.png" /> 9º GPT LOG - Estádio Municipal': layer_9GPTLOGEstdioMunicipal_16, '<img src="legend/9GPTLOGHospitaispostosdeSadeUPA_15.png" /> 9º GPT LOG - Hospitais, postos de Saúde, UPA': layer_9GPTLOGHospitaispostosdeSadeUPA_15, '<img src="legend/9GPTLOGLogsticaManutenoPrestadorasdeServios_14.png" /> 9º GPT LOG - Logística Manutenção - Prestadoras de Serviços': layer_9GPTLOGLogsticaManutenoPrestadorasdeServios_14, '<img src="legend/9GPTLOGLogsticaSalvamentoPrestadorasdeServios_13.png" /> 9º GPT LOG - Logística Salvamento - Prestadoras de Serviços': layer_9GPTLOGLogsticaSalvamentoPrestadorasdeServios_13, '<img src="legend/9GPTLOGLogsticaSuprimentoEmpresas_12.png" /> 9º GPT LOG - Logística Suprimento-Empresas': layer_9GPTLOGLogsticaSuprimentoEmpresas_12, '<img src="legend/9GPTLOGLogsticaTransportePrestadorasdeServios_11.png" /> 9º GPT LOG - Logística Transporte - Prestadoras de Serviços': layer_9GPTLOGLogsticaTransportePrestadorasdeServios_11, '<img src="legend/9GPTLOGMeiosdeHospedagens_10.png" /> 9º GPT LOG - Meios de Hospedagens': layer_9GPTLOGMeiosdeHospedagens_10, '<img src="legend/9GPTLOGRededeEnsinoPblicaePrivada_9.png" /> 9º GPT LOG - Rede de Ensino Pública e Privada': layer_9GPTLOGRededeEnsinoPblicaePrivada_9, '<img src="legend/9GPTLOGSANESUL_8.png" /> 9º GPT LOG - SANESUL': layer_9GPTLOGSANESUL_8, '<img src="legend/9GPTLOGSubestaodeEnergiaEltrica_7.png" /> 9º GPT LOG - Subestação de Energia Elétrica': layer_9GPTLOGSubestaodeEnergiaEltrica_7, '<img src="legend/9GPTLOGTerminalRodovirio_6.png" /> 9º GPT LOG - Terminal Rodoviário': layer_9GPTLOGTerminalRodovirio_6, '<img src="legend/AERODROMO_PUBLICO_5.png" /> AERODROMO_PUBLICO': layer_AERODROMO_PUBLICO_5, '<img src="legend/AERODROMO_PRIVADO_OFICIAL_4.png" /> AERODROMO_PRIVADO_OFICIAL': layer_AERODROMO_PRIVADO_OFICIAL_4, '<img src="legend/GISSDERODOVIAS_FEDERAIS_3.png" /> GIS.SDE.RODOVIAS_FEDERAIS': layer_GISSDERODOVIAS_FEDERAIS_3, '<img src="legend/GISSDERODOVIAS_ESTADUAIS_2.png" /> GIS.SDE.RODOVIAS_ESTADUAIS': layer_GISSDERODOVIAS_ESTADUAIS_2, '<img src="legend/GISSDEVIA_FERREA_1.png" /> GIS.SDE.VIA_FERREA': layer_GISSDEVIA_FERREA_1, '<img src="legend/GISSDEESTADO_DE_MS_POLITICO_0.png" /> GIS.SDE.ESTADO_DE_MS_POLITICO': layer_GISSDEESTADO_DE_MS_POLITICO_0, }).addTo(map);
         setBounds();
         var i = 0;
-        layer_GISSDEESTADO_DE_MS_POLITICO_0.eachLayer(function(layer) {
+        layer_GISSDEESTADO_DE_MS_POLITICO_0.eachLayer(function (layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['Municipio'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Liberation Sans\', sans-serif;">' + layer.feature.properties['Municipio']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_GISSDEESTADO_DE_MS_POLITICO_0'});
+            layer.bindTooltip((layer.feature.properties['Municipio'] !== null ? String('<div style="color: #323232; font-size: 10pt; font-family: \'Liberation Sans\', sans-serif;">' + layer.feature.properties['Municipio']) + '</div>' : ''), { permanent: true, offset: [-0, -16], className: 'css_GISSDEESTADO_DE_MS_POLITICO_0' });
             labels.push(layer);
             totalMarkers += 1;
-              layer.added = true;
-              addLabel(layer, i);
-              i++;
+            layer.added = true;
+            addLabel(layer, i);
+            i++;
         });
         var i = 0;
-        layer_GISSDERODOVIAS_ESTADUAIS_2.eachLayer(function(layer) {
+        layer_GISSDERODOVIAS_ESTADUAIS_2.eachLayer(function (layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['NOME'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Liberation Sans\', sans-serif;">' + layer.feature.properties['NOME']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_GISSDERODOVIAS_ESTADUAIS_2'});
+            layer.bindTooltip((layer.feature.properties['NOME'] !== null ? String('<div style="color: #323232; font-size: 10pt; font-family: \'Liberation Sans\', sans-serif;">' + layer.feature.properties['NOME']) + '</div>' : ''), { permanent: true, offset: [-0, -16], className: 'css_GISSDERODOVIAS_ESTADUAIS_2' });
             labels.push(layer);
             totalMarkers += 1;
-              layer.added = true;
-              addLabel(layer, i);
-              i++;
+            layer.added = true;
+            addLabel(layer, i);
+            i++;
         });
         var i = 0;
-        layer_GISSDERODOVIAS_FEDERAIS_3.eachLayer(function(layer) {
+        layer_GISSDERODOVIAS_FEDERAIS_3.eachLayer(function (layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['NOME'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Liberation Sans\', sans-serif;">' + layer.feature.properties['NOME']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_GISSDERODOVIAS_FEDERAIS_3'});
+            layer.bindTooltip((layer.feature.properties['NOME'] !== null ? String('<div style="color: #323232; font-size: 10pt; font-family: \'Liberation Sans\', sans-serif;">' + layer.feature.properties['NOME']) + '</div>' : ''), { permanent: true, offset: [-0, -16], className: 'css_GISSDERODOVIAS_FEDERAIS_3' });
             labels.push(layer);
             totalMarkers += 1;
-              layer.added = true;
-              addLabel(layer, i);
-              i++;
+            layer.added = true;
+            addLabel(layer, i);
+            i++;
         });
-        resetLabels([layer_GISSDEESTADO_DE_MS_POLITICO_0,layer_GISSDERODOVIAS_ESTADUAIS_2,layer_GISSDERODOVIAS_FEDERAIS_3]);
-        map.on("zoomend", function(){
-            resetLabels([layer_GISSDEESTADO_DE_MS_POLITICO_0,layer_GISSDERODOVIAS_ESTADUAIS_2,layer_GISSDERODOVIAS_FEDERAIS_3]);
+        resetLabels([layer_GISSDEESTADO_DE_MS_POLITICO_0, layer_GISSDERODOVIAS_ESTADUAIS_2, layer_GISSDERODOVIAS_FEDERAIS_3]);
+        map.on("zoomend", function () {
+            resetLabels([layer_GISSDEESTADO_DE_MS_POLITICO_0, layer_GISSDERODOVIAS_ESTADUAIS_2, layer_GISSDERODOVIAS_FEDERAIS_3]);
         });
-        map.on("layeradd", function(){
-            resetLabels([layer_GISSDEESTADO_DE_MS_POLITICO_0,layer_GISSDERODOVIAS_ESTADUAIS_2,layer_GISSDERODOVIAS_FEDERAIS_3]);
+        map.on("layeradd", function () {
+            resetLabels([layer_GISSDEESTADO_DE_MS_POLITICO_0, layer_GISSDERODOVIAS_ESTADUAIS_2, layer_GISSDERODOVIAS_FEDERAIS_3]);
         });
-        map.on("layerremove", function(){
-            resetLabels([layer_GISSDEESTADO_DE_MS_POLITICO_0,layer_GISSDERODOVIAS_ESTADUAIS_2,layer_GISSDERODOVIAS_FEDERAIS_3]);
+        map.on("layerremove", function () {
+            resetLabels([layer_GISSDEESTADO_DE_MS_POLITICO_0, layer_GISSDERODOVIAS_ESTADUAIS_2, layer_GISSDERODOVIAS_FEDERAIS_3]);
         });
 
         //basemap
@@ -1397,11 +1420,75 @@
             url: url
         }).addTo(map);
 
-        //L.esri.basemapLayer('Gray').addTo(map);
+        L.control.scale({
+            metric: true,
+            imperial: false,
+            maxWidth: 100,
+            position: "bottomleft"
 
-        /*L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);*/
-        </script>
-    </body>
+        }).addTo(map);
+
+        L.control.coordinates({
+            position: "bottomleft", //optional default "bootomright"
+            decimals: 2, //optional default 4
+            decimalSeperator: ".", //optional default "."
+            labelTemplateLat: "Latitude: {y}", //optional default "Lat: {y}"
+            labelTemplateLng: "Longitude: {x}", //optional default "Lng: {x}"
+            enableUserInput: true, //optional default true
+            useDMS: false, //optional default false
+            useLatLngOrder: true, //ordering of labels, default false-> lng-lat
+            markerType: L.marker, //optional default L.marker
+            markerProps: {}, //optional default {},
+            labelFormatterLng: function (lng) { return lng + " lng" }, //optional default none,
+            labelFormatterLat: function (lat) { return lat + " lat" }, //optional default none
+            customLabelFcn: function (latLonObj, opts) { "Geohash: " + encodeGeoHash(latLonObj.lat, latLonObj.lng) } //optional default none
+        }).addTo(map);
+
+        L.latlngGraticule({
+            showLabel: true,
+            dashArray: [5, 5],
+            zoomInterval: [
+                { start: 2, end: 3, interval: 30 },
+                { start: 4, end: 4, interval: 10 },
+                { start: 5, end: 7, interval: 5 },
+                { start: 8, end: 10, interval: 1 },
+                { start: 11, end: 16, interval: 0.25 }
+            ]
+        }).addTo(map);
+
+        map.pm.addControls({
+            position: 'topright',
+            drawMarker: false,
+            drawCircleMarker: true,
+            rotateMode: true,
+            oneBlock: false,
+        });
+
+        var customActionToPrint = function (context, mode) {
+            return function () {
+                window.alert("We are printing the MAP. Let's do Custom print here!");
+                context._printMode(mode);
+            }
+        };
+
+        L.control.browserPrint({
+            title: 'Just print me!',
+            documentTitle: 'Map printed using leaflet.browser.print plugin',
+            
+            closePopupsOnPrint: false,
+            printModes: [
+                L.BrowserPrint.Mode.Landscape("Tabloid", { title: "Tabloid VIEW" }),
+                L.browserPrint.mode("Alert", { title: "User specified print action", pageSize: "A6", action: customActionToPrint, invalidateBounds: false }),
+                L.BrowserPrint.Mode.Landscape(),
+                "Portrait",
+                L.BrowserPrint.Mode.Auto("B4", { title: "Auto" }),
+                L.BrowserPrint.Mode.Custom("B5", { title: "Select area" })
+            ],
+            manualMode: false
+        }).addTo(map);
+
+
+    </script>
+</body>
+
 </html>
