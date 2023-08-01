@@ -147,6 +147,7 @@
         var layer_SedesdosMunicpiosAglomeradosRuraiseUrbanos_0 = new L.geoJson(json_SedesdosMunicpiosAglomeradosRuraiseUrbanos_0, {
             attribution: '',
             interactive: true,
+            pmIgnore: true,
             dataVar: 'json_SedesdosMunicpiosAglomeradosRuraiseUrbanos_0',
             layerName: 'layer_SedesdosMunicpiosAglomeradosRuraiseUrbanos_0',
             pane: 'pane_SedesdosMunicpiosAglomeradosRuraiseUrbanos_0',
@@ -1364,9 +1365,14 @@
             url: url})
         //}).addTo(map);
 
+        var landsat8 = L.tileLayer.wms("https://brazildatacube.dpi.inpe.br/bdc/geoserver/mosaics/ows",{
+            layers: 'mosaics:LC8-MOSAIC-BRAZIL_30_6M_MEDSTK'
+        })
+
         var baseMaps = {
             "bdgex": wmsLayer,
-            "imagem": esri
+            "imagem": esri,
+            "landsat8":landsat8,
         };
 
         L.control.layers(baseMaps, { 
